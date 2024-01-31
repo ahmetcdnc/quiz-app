@@ -1,0 +1,199 @@
+.btn-start,
+.quiz_box,
+.score_box{
+    /* butonu ve quiz_box'u sayfanın ortasına aldık. */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.quiz_box.active{
+    /* quizbox "active" classına sahipse görünürlük ve tıklanabilirliğini geri veriyoruz. Js ile active classı veriyoruz */
+    opacity: 1;
+    pointer-events: auto;
+    /* animasyon devam */
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.quiz_box{
+    /* animasyon */
+    transform: translate(-50%,-50%) scale(0.7);
+    transition: all 0.5s ease;
+
+    width: 550px;
+    /* Ekran ilk açıldığında ekranda start butonunun gözükmesi için quizboxu gizledik */
+    opacity: 0;
+    /* Ekran ilk açıldığında butona tıklanabilmesi için quizboxtaki tıklanabilir kısımları kapatıyoruz. */
+    pointer-events: none;
+}
+
+.quiz_box header .title{
+    /* başlığa font ayarlaması */
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.quiz_box .question-text{
+    /* soru kısmına font ayarlaması */
+   font-size: 20px;
+   font-weight: 600; 
+}
+
+.quiz_box .option_list{
+    /* seçenekler listesine padding */
+    padding: 18px 0;
+}
+
+
+.quiz_box .option_list .option{
+    /* seçeneklerin her biri */
+    border: 1px solid #151d3b;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    /* seçenek içindeki yazı ve doğru-yanlış imgesini sağa sola hizaladık */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quiz_box .option_list .option:hover{
+    color: #112b2c;
+    background-color: #ffd33d;
+}
+
+.quiz_box .option_list .option.correct{
+    /* doğru seçenek için renk ayarlaması */
+    color: #155724;
+    background-color: #d4edda;
+}
+
+.quiz_box .option_list .option.incorrect{
+    /* yanlış seçenek için renk ayarlaması */
+    color: #721c24;
+    background-color: #f8d7da;
+}
+
+.quiz_box .option_list .option.disabled{
+    /* Bir seçim yapıldıktan sonra kullanıcı bir daha seçim yapamaz. (Tek hakkı var) */
+    pointer-events: none;
+
+}
+
+.quiz_box .next_btn{
+    /* Başlangıçta görünürlüğü kapalı. */
+    opacity: 0;
+    /* Tıklama ve işlem yapılması kapalı. */
+    pointer-events: none;
+    /* animasyon */
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+}
+
+/* Js içinde show classı eklediğimizde burası aktif olacak */
+.quiz_box .next_btn.show{
+    /* Görünürlük açıldı. */
+    opacity: 1;
+    /* Tıklama ve işlem yapılması açıldı. */
+    pointer-events: auto;
+    /* animasyon */
+    transform: scale(1);
+
+}
+
+/* sonraki butonu ve soru sayısını konumlandırdık */
+.quiz_box footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* timer */
+.quiz_box header{/*Başlık ve süreyi yan yana aldık*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Ekleyeceğimiz animasyon çizgisi header'a göre konumlanmasını istediğimiz için position relative verdik.(aşağıda time_line için position absolute verdik) */
+    position: relative;
+}
+
+.quiz_box header .timer{
+    /*Süre ve saniyesini yan yana aldık.*/
+    display: flex;
+    /*dikeyde ortaladık*/
+    align-items: center;
+    background: #143f68;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.quiz_box header .timer .time_text{
+    font-size: 14px;
+}
+
+.quiz_box header .timer .time_second{
+    background: #f0a500;
+    border-radius: 3px;
+    padding: 3px;
+    margin-left: 3px;
+    /*Süre değişince sayılar değişeceği için genişliği sabit tuttuk.*/
+    width: 25px;
+    /*Bundan dolayı da metni ortaladık.*/
+    text-align: center;
+}
+
+.quiz_box header .time_line{
+    /*  Header flex dediğimiz için burada position absolute vererek normal akışın dışına çıkardık. flexten kurtardık */
+    position: absolute;
+    /* header'ın alt ve sol tarafına yanaşsın */
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    /* score_box 550px olduğu için JS ile width: 0-550 arası veriyoruz; */
+    background:#f0a500 ;
+}
+
+/* score box */ 
+.score_box.active{/*Başlangıçta kapalı olan özellikler active classına sahip olduğunda gelecek*/
+    /* scorebox "active" classına sahipse görünürlük ve tıklanabilirliğini geri veriyoruz. Js ile active classı veriyoruz */
+    opacity: 1;
+    pointer-events: auto;
+    /* animasyon devam */
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.score_box{ 
+    width: 550px;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+
+    
+    /* animasyon */
+    transform: translate(-50%,-50%) scale(0.7);
+    transition: all 0.5s ease;
+    
+    /* Ekran ilk açıldığında ekranda start butonunun gözükmesi için scoreboxu gizledik */
+    opacity: 0;
+    /* Ekran ilk açıldığında butona tıklanabilmesi için scoreboxtaki tıklanabilir kısımları kapatıyoruz. */
+    pointer-events: none;
+}
+
+.score_box .icon{
+    font-size: 90px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.score_box .score_text{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
